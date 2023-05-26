@@ -187,3 +187,7 @@ a:focus {
   background-color: #3BACB6 !important;
   color: #fff !important;
 }
+
+.hidden {
+    display: none;
+}

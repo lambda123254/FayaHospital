@@ -23,7 +23,7 @@ if(!isset($_SESSION["logged_in"])){
 <body class="color-background-gray">
     <nav class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="true" data-bs-scroll="true" aria-modal="true" role="dialog" style="visibility: visible;">
       <div class="offcanvas-header border-bottom" id="sidebar">
-        <a href="/" class="d-flex align-items-center text-decoration-none offcanvas-title d-sm-block">
+        <a href="../" class="d-flex align-items-center text-decoration-none offcanvas-title d-sm-block">
           <h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
                 <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
@@ -34,7 +34,6 @@ if(!isset($_SESSION["logged_in"])){
         </a>
       </div>
       <div class="offcanvas-body px-0">
-        
         <ul class="list-unstyled ps-0">
           <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
@@ -123,7 +122,7 @@ if(!isset($_SESSION["logged_in"])){
                 
             </div>
         </div>
-        <div class="container row pt-25vh pl-5" id="navbarCustom">
+        <div class="container row pt-25vh pl-5 d-none" id="homeButtonArea">
             <div class="col d-flex flex-row-reverse text-center mt-3 mb-3 mr-5">
                 <a href="">
                     <div class="card button-custom">
@@ -165,6 +164,75 @@ if(!isset($_SESSION["logged_in"])){
                 
             </div>
         </div>
+        <div class="pt-3" id="homeFormArea">
+            <div class="container row pl-5">
+                <h5>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
+                        <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
+                        <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
+                    </svg>    
+                    Rawat Inap
+                </h5>
+            </div>
+            <div class="row pl-5 text-center justify-content-center" style="padding-left: 400px; padding-right: 150px;" >
+                <div class="card pl-5">
+                    <div class="card-body">
+                        <h5>
+                            <img src="../Assets/Icon/patient.png" alt="" width="36" height="36">
+                            Pasien
+                        </h5>
+                    </div>
+                    <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
+                        <form action="">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label mb-3">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col col-form-label mb-3">Tanggal Lahir</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label mb-3">Jenis Kelamin</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control mb-3" id="inputName" name="inputName" placeholder="input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label mb-3">Alamat</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label mb-3">No Telepon</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Informasi Asuransi</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                </div>
+                            </div>
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-2">
+                                    <button class="btn login-button">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

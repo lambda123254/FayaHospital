@@ -19,7 +19,7 @@ if(isset($_POST['usernameInput']) && isset($_POST['usernameInput'])) {
             $_SESSION['logged_in'] = $uname;
             header("location: pages/home");
         } else {
-            echo "Wrong password!";
+            echo "<script>alert('Wrong password!');</script>";
         }
       }
     }
