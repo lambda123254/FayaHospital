@@ -4,16 +4,26 @@ var icon = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill=
 $(document).ready(function() {
     var home = $('#homeButtonArea')
     var form = $('#homeFormArea')
+    var profile = $('#homeProfileArea')
     var formTitle = $('#formTitle')
+    
     $(document).on("click", "#rawatInapButton", function() {
         home.addClass("d-none")
         form.removeClass("d-none")
+        profile.addClass("d-none")
         formTitle.html(icon + "&nbsp;" + "Rawat Inap")
     });
 
     $(document).on("click", "#rawatJalanButton", function() {
         home.addClass("d-none")
         form.removeClass("d-none")
+        profile.addClass("d-none")
         formTitle.html(icon + "&nbsp;" + "Rawat Jalan")
+    });
+
+    $(document).on("click", "#profileButton", function() {
+        home.addClass("d-none")
+        form.addClass("d-none")
+        profile.removeClass("d-none")
     });
 });

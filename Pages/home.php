@@ -1,9 +1,8 @@
 <?php
-session_start();
+include("../Modules/get_profile_data.php");
 if(!isset($_SESSION["logged_in"])){
     header("location: ../");
 } 
-
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +112,7 @@ if(!isset($_SESSION["logged_in"])){
     <div class="color-gray mr-0">
         <div class="row navbar-custom" id="navbarCustom">
             <div class="col d-flex flex-row-reverse text-center mt-3 mb-3 mr-5">
-                <a href="">
+                <a href="#" id="profileButton">
                     <svg class="svg-color-white" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 10" preserveAspectRatio="xMidYMin">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -183,7 +182,7 @@ if(!isset($_SESSION["logged_in"])){
                         </h5>
                     </div>
                     <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
-                        <form action="">
+                        <form action="" method="POST">
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label mb-3">Nama</label>
                                 <div class="col-sm-10">
@@ -226,6 +225,41 @@ if(!isset($_SESSION["logged_in"])){
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="pt-3 d-none" id="homeProfileArea">
+            
+            <div class="row pl-5 text-center justify-content-center" style="padding-left: 400px; padding-right: 150px;" >
+                <div class="card pl-5">
+                    <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label mb-3">User ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control mb-3" id="useridData" value="<? echo $data->userId; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label mb-3">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="usernameData" value="<? echo $data->username; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label mb-3">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="emailData" value="<? echo $data->email; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Department</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="departmentData" value="<? echo $data->department; ?>" readonly>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
