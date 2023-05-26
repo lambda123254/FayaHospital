@@ -1,5 +1,6 @@
 <?php
 include("../Modules/get_profile_data.php");
+include("../Modules/insert_profile_data.php");
 if(!isset($_SESSION["logged_in"])){
     header("location: ../");
 } 
@@ -186,7 +187,7 @@ if(!isset($_SESSION["logged_in"])){
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label mb-3">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="input">
                                 </div>
                             </div>
                             <div class="form-group row">
