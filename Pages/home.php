@@ -41,14 +41,14 @@ if(!isset($_SESSION["logged_in"])){
             </button>
             <div class="collapse" id="home-collapse" style="">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small pl-1">
-                <li><a href="/" class="rounded">
+                <li><a href="#" class="rounded" id="rawatInapButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
                         <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
                         <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
                     </svg>
                     &nbsp; Rawat Inap
                 </a></li>
-                <li><a href="#" class="rounded">
+                <li><a href="#" class="rounded" id="rawatJalanButton">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
                         <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
                         <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
@@ -122,9 +122,9 @@ if(!isset($_SESSION["logged_in"])){
                 
             </div>
         </div>
-        <div class="container row pt-25vh pl-5 d-none" id="homeButtonArea">
+        <div class="container row pt-25vh pl-5" id="homeButtonArea">
             <div class="col d-flex flex-row-reverse text-center mt-3 mb-3 mr-5">
-                <a href="">
+                <a href="#" id="rawatInapButton">
                     <div class="card button-custom">
                         <div class="card-body">
                             <div class="row">
@@ -144,7 +144,7 @@ if(!isset($_SESSION["logged_in"])){
                 
             </div>
             <div class="col d-flex  text-center mt-3 mb-3 mr-5">
-                <a href="">
+                <a href="#" id="rawatJalanButton">
                     <div class="card button-custom">
                         <div class="card-body">
                             <div class="row">
@@ -164,13 +164,13 @@ if(!isset($_SESSION["logged_in"])){
                 
             </div>
         </div>
-        <div class="pt-3" id="homeFormArea">
+        <div class="pt-3 d-none" id="homeFormArea">
             <div class="container row pl-5">
-                <h5>
+                <h5 id="formTitle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
                         <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
                         <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
-                    </svg>    
+                    </svg>   
                     Rawat Inap
                 </h5>
             </div>
@@ -193,31 +193,31 @@ if(!isset($_SESSION["logged_in"])){
                             <div class="form-group row">
                                 <label for="" class="col col-form-label mb-3">Tanggal Lahir</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                    <input type="date" class="form-control" id="inputDOB" name="inputDOB" placeholder="input">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label mb-3">Jenis Kelamin</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control mb-3" id="inputName" name="inputName" placeholder="input">
+                                    <input type="text" class="form-control mb-3" id="inputGender" name="inputGender" placeholder="input">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label mb-3">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                    <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="input">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label mb-3">No Telepon</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                    <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="input">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Informasi Asuransi</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputName" name="inputName" placeholder="input">
+                                    <input type="text" class="form-control" id="inputInsurance" name="inputInsurance" placeholder="input">
                                 </div>
                             </div>
                             <div class="form-group row justify-content-center">
@@ -239,8 +239,10 @@ if(!isset($_SESSION["logged_in"])){
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var offsetHeight = document.getElementById("navbarCustom").offsetHeight;
         document.getElementById('sidebar').style.height = offsetHeight + "px";
     </script>
+    <script src="../Scripts/home_handle.js"></script>
 </body>
