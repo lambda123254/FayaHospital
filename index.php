@@ -21,7 +21,7 @@ if(isset($_SESSION["logged_in"])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">    <title>Document</title>
 </head>
 <body class="color-background-gray">
-    <div class="container color-gray">
+    <div class="color-gray">
         <div class="row pt-5 mt-5 pb-3">
             <div class="col-sm text-center">
                 <img src="Assets/placeholder.jpeg" width="100vw">
