@@ -1,9 +1,19 @@
 <?php
 include("../Modules/get_profile_data.php");
 include("../Modules/insert_profile_data.php");
+include("../Common/app_context.php");
+include("../Common/constant.php");
+
+$context;
 if(!isset($_SESSION["logged_in"])){
     header("location: ../");
 } 
+
+if(isset($_GET["context"])){
+    $context = $_GET["context"];
+} else {
+    $context = "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +29,7 @@ if(!isset($_SESSION["logged_in"])){
     <link rel="stylesheet" href="../Style/border.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 </head>
 <body class="color-background-gray">
     <nav class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="true" data-bs-scroll="true" aria-modal="true" role="dialog" style="visibility: visible;">
@@ -64,22 +75,22 @@ if(!isset($_SESSION["logged_in"])){
             </button>
             <div class="collapse" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="rounded">
+                <li><a href="?context=patient" class="rounded">
                     <img src="../Assets/Icon/patient.png" alt="" width="16" height="16">
                     &nbsp; Pasien
                 </a></li>
-                <li><a href="#" class="rounded">
+                <li><a href="?context=doctor" class="rounded">
                     <img src="../Assets/Icon/doctor.png" alt="" width="16" height="16">
                     &nbsp; Dokter
                 </a></li>
-                <li><a href="#" class="rounded">
+                <li><a href="?context=service" class="rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
                         <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
                         <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
                     </svg>
                     &nbsp; Layanan Medis
                 </a></li>
-                <li><a href="#" class="rounded">
+                <li><a href="?context=record" class="rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
                         <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
@@ -87,7 +98,7 @@ if(!isset($_SESSION["logged_in"])){
                     </svg>
                     &nbsp; Rekam Medis
                 </a></li>
-                <li><a href="#" class="rounded">
+                <li><a href="?context=inout" class="rounded">
                     <img src="../Assets/Icon/masuk:keluar.png" alt="" width="16" height="16">
                     &nbsp;  Masuk/Keluar
                 </a></li>
@@ -122,7 +133,7 @@ if(!isset($_SESSION["logged_in"])){
                 
             </div>
         </div>
-        <div class="container row pt-25vh pl-5" id="homeButtonArea">
+        <div class="container row pt-25vh pl-5 d-none" id="homeButtonArea">
             <div class="col d-flex flex-row-reverse text-center mt-3 mb-3 mr-5">
                 <a href="#" id="rawatInapButton">
                     <div class="card button-custom">
@@ -240,27 +251,51 @@ if(!isset($_SESSION["logged_in"])){
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label mb-3">User ID</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control mb-3" id="useridData" value="<? echo $data->userId; ?>" readonly>
+                                <input type="text" class="form-control mb-3" id="useridData" value="<? echo $user_data->userId; ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label mb-3">Username</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="usernameData" value="<? echo $data->username; ?>" readonly>
+                                <input type="text" class="form-control" id="usernameData" value="<? echo $user_data->username; ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label mb-3">Email</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="emailData" value="<? echo $data->email; ?>" readonly>
+                                <input type="text" class="form-control" id="emailData" value="<? echo $user_data->email; ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Department</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="departmentData" value="<? echo $data->department; ?>" readonly>
+                                <input type="text" class="form-control" id="departmentData" value="<? echo $user_data->department; ?>" readonly>
                             </div>
                         </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="pt-3" id="homeDataTableArea">
+            <div class="row pl-5 text-center justify-content-center" style="padding-left: 300px; padding-right: 50px;" >
+                <div class="card pl-5">
+                    <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
+                    <table class="table" id="datatable">
+                        <thead>
+                            <tr>
+                                <?php
+                                    if ($context == AppContext::PATIENT) {
+                                        $patientColumn = Constant::PATIENTCOLUMN;
+                                        for($i = 0; $i < Constant::PATIENT; $i++) {
+                                            echo "<th>$patientColumn[$i]</th>";
+                                        }
+                                    }
+                                ?>
+                            </tr>
+                        </thead>
+                    </table>
                     </div>
                     
                 </div>
@@ -275,9 +310,12 @@ if(!isset($_SESSION["logged_in"])){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <script type="text/javascript">
         var offsetHeight = document.getElementById("navbarCustom").offsetHeight;
         document.getElementById('sidebar').style.height = offsetHeight + "px";
     </script>
     <script src="../Scripts/home_handle.js"></script>
+    <script src="../Scripts/datatable.js"></script>
 </body>
