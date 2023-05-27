@@ -6,12 +6,14 @@ $(document).ready(function() {
     var form = $('#homeFormArea')
     var profile = $('#homeProfileArea')
     var formTitle = $('#formTitle')
+    var datatable = $('#homeDataTableArea')
     
     $(document).on("click", "#rawatInapButton", function() {
         home.addClass("d-none")
         form.removeClass("d-none")
         profile.addClass("d-none")
         formTitle.html(icon + "&nbsp;" + "Rawat Inap")
+        datatable.addClass("d-none")
     });
 
     $(document).on("click", "#rawatJalanButton", function() {
@@ -19,11 +21,13 @@ $(document).ready(function() {
         form.removeClass("d-none")
         profile.addClass("d-none")
         formTitle.html(icon + "&nbsp;" + "Rawat Jalan")
+        datatable.addClass("d-none")
     });
 
     $(document).on("click", "#profileButton", function() {
         home.addClass("d-none")
         form.addClass("d-none")
         profile.removeClass("d-none")
+        datatable.addClass("d-none")
     });
 });
