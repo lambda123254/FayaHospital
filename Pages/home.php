@@ -285,47 +285,79 @@ if(isset($_GET["context"])){
             <div class="row pl-5 text-center justify-content-center" style="padding-left: 300px; padding-right: 50px;" >
                 <div class="card pl-5">
                     <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
-                    <table class="table" id="datatable">
-                        <thead>
-                            <tr>
-                                <?php
-                                    $patientColumn = Constant::PATIENT_COLUMN;
-                                    $doctorColumn = Constant::DOCTOR_COLUMN;
-                                    $serviceColumn = Constant::SERVICE_COLUMN;
-                                    $recordColumn = Constant::RECORD_COLUMN;
-                                    $inoutColumn = constant::INOUT_COLUMN;
-                                    if ($context == AppContext::PATIENT) {
-                                        for($i = 0; $i < count($patientColumn); $i++) {
-                                            echo "<th>$patientColumn[$i]</th>";
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex flex-row">
+                                    <h5 id="formTitle">   
+                                        <?
+                                            if ($context == AppContext::PATIENT) {
+                                                echo Constant::PATIENT_HTML_ICON;
+                                                echo ucwords(Constant::PATIENT_TITLE);
+                                            } else if($context == AppContext::DOCTOR) {
+                                                echo Constant::DOCTOR_HTML_ICON;
+                                                echo ucwords(Constant::DOCTOR_TITLE);
+                                            } else if($context == AppContext::SERVICE) {
+                                                echo Constant::SERVICE_HTML_ICON;
+                                                echo ucwords(Constant::SERVICE_TITLE);
+                                            } else if($context == AppContext::RECORD) {
+                                                echo Constant::RECORD_HTML_ICON;
+                                                echo ucwords(Constant::RECORD_TITLE);
+                                            } else if($context == AppContext::INOUT) {
+                                                echo Constant::INOUT_HTML_ICON;
+                                                echo ucwords(Constant::INOUT_TITLE);
+                                            }
+                                            
+                                        ?>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex flex-row-reverse">
+                                    <a href="#" class="btn btn-primary">Input Data</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <table class="table" id="datatable">
+                            <thead>
+                                <tr style="background-color: var(--lightBlueSlightDarker); color: white;">
+                                    <?php
+                                        $patientColumn = Constant::PATIENT_COLUMN;
+                                        $doctorColumn = Constant::DOCTOR_COLUMN;
+                                        $serviceColumn = Constant::SERVICE_COLUMN;
+                                        $recordColumn = Constant::RECORD_COLUMN;
+                                        $inoutColumn = constant::INOUT_COLUMN;
+                                        if ($context == AppContext::PATIENT) {
+                                            for($i = 0; $i < count($patientColumn); $i++) {
+                                                echo "<th>$patientColumn[$i]</th>";
+                                            }
+                                        } else if($context == AppContext::DOCTOR) {
+                                            for($i = 0; $i < count($patientColumn); $i++) {
+                                                echo "<th>$doctorColumn[$i]</th>";
+                                            }
+                                        } else if($context == AppContext::SERVICE) {
+                                            for($i = 0; $i < count($serviceColumn); $i++) {
+                                                echo "<th>$serviceColumn[$i]</th>";
+                                            }
+                                        } else if($context == AppContext::RECORD) {
+                                            for($i = 0; $i < count($recordColumn); $i++) {
+                                                echo "<th>$recordColumn[$i]</th>";
+                                            }
+                                        } else if($context == AppContext::INOUT) {
+                                            for($i = 0; $i < count($inoutColumn); $i++) {
+                                                echo "<th>$inoutColumn[$i]</th>";
+                                            }
                                         }
-                                    } else if($context == AppContext::DOCTOR) {
-                                        for($i = 0; $i < count($patientColumn); $i++) {
-                                            echo "<th>$doctorColumn[$i]</th>";
-                                        }
-                                    } else if($context == AppContext::SERVICE) {
-                                        for($i = 0; $i < count($serviceColumn); $i++) {
-                                            echo "<th>$serviceColumn[$i]</th>";
-                                        }
-                                    } else if($context == AppContext::RECORD) {
-                                        for($i = 0; $i < count($recordColumn); $i++) {
-                                            echo "<th>$recordColumn[$i]</th>";
-                                        }
-                                    } else if($context == AppContext::INOUT) {
-                                        for($i = 0; $i < count($inoutColumn); $i++) {
-                                            echo "<th>$inoutColumn[$i]</th>";
-                                        }
-                                    }
-                                ?>
-                            </tr>
-                        </thead>
-                    </table>
+                                    ?>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                     
                 </div>
                 
             </div>
         </div>
-        
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
@@ -334,6 +366,7 @@ if(isset($_GET["context"])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         var offsetHeight = document.getElementById("navbarCustom").offsetHeight;
@@ -353,7 +386,6 @@ if(isset($_GET["context"])){
             home.addClass("d-none")
             profile.addClass("d-none")
             form.addClass("d-none")
-            formTitle.addClass("d-none")
             datatable.removeClass("d-none")
 
         } else {
