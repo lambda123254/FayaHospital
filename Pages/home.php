@@ -313,7 +313,7 @@ if(isset($_GET["context"])){
                             </div>
                             <div class="col">
                                 <div class="d-flex flex-row-reverse">
-                                    <a href="#" class="btn btn-primary">Input Data</a>
+                                    <button class="btn btn-primary" id="inputDataButton">Input Data</button>
                                 </div>
                             </div>
                         </div>
@@ -358,7 +358,7 @@ if(isset($_GET["context"])){
                 
             </div>
         </div>
-        <div class="pt-3" id="homeDataInputArea">
+        <div class="pt-3 d-none" id="homeDataInputArea">
             <div class="row pl-5 text-center justify-content-center" style="padding-left: 400px; padding-right: 150px;" >
                 <div class="card pl-5">
                     <div class="card-body">

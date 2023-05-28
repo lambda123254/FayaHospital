@@ -7,7 +7,7 @@ $(document).ready(function() {
     var profile = $('#homeProfileArea')
     var formTitle = $('#formTitle')
     var datatable = $('#homeDataTableArea')
-    var input = $('#homeInputDataArea')
+    var input = $('#homeDataInputArea')
     
     $(document).on("click", "#rawatInapButton", function() {
         home.addClass("d-none")
@@ -25,6 +25,7 @@ $(document).ready(function() {
         formTitle.html(icon + "&nbsp;" + "Rawat Jalan")
         datatable.addClass("d-none")
         profile.addClass("d-none")
+        input.addClass("d-none")
     });
 
     $(document).on("click", "#profileButton", function() {
@@ -32,6 +33,14 @@ $(document).ready(function() {
         form.addClass("d-none")
         profile.removeClass("d-none")
         datatable.addClass("d-none")
+        input.addClass("d-none")
+    });
+
+    $(document).on("click", "#inputDataButton", function() {
+        home.addClass("d-none")
+        form.addClass("d-none")
         profile.addClass("d-none")
+        datatable.addClass("d-none")
+        input.removeClass("d-none")
     });
 });
