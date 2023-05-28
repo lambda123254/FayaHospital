@@ -1,6 +1,6 @@
 <?php
 
-class Doctor {
+class InOut {
     public $date;
     public $patient_id;
     public $service_id;
