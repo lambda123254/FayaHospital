@@ -358,6 +358,124 @@ if(isset($_GET["context"])){
                 
             </div>
         </div>
+        <div class="pt-3" id="homeDataInputArea">
+            <div class="row pl-5 text-center justify-content-center" style="padding-left: 400px; padding-right: 150px;" >
+                <div class="card pl-5">
+                    <div class="card-body">
+                        <?
+                            if ($context == AppContext::PATIENT) {
+                                echo Constant::PATIENT_HTML_ICON;
+                                echo ucwords(Constant::PATIENT_TITLE);
+                            } else if($context == AppContext::DOCTOR) {
+                                echo Constant::DOCTOR_HTML_ICON;
+                                echo ucwords(Constant::DOCTOR_TITLE);
+                            } else if($context == AppContext::SERVICE) {
+                                echo Constant::SERVICE_HTML_ICON;
+                                echo ucwords(Constant::SERVICE_TITLE);
+                            } else if($context == AppContext::RECORD) {
+                                echo Constant::RECORD_HTML_ICON;
+                                echo ucwords(Constant::RECORD_TITLE);
+                            } else if($context == AppContext::INOUT) {
+                                echo Constant::INOUT_HTML_ICON;
+                                echo ucwords(Constant::INOUT_TITLE);
+                            }
+                                            
+                        ?>
+                    </div>
+                    <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
+                        <form action="../Modules/insert_additional_data.php?context=<?echo $context;?>" method="POST">
+                            <?php
+                                $patientColumn = Constant::PATIENT_COLUMN;
+                                $doctorColumn = Constant::DOCTOR_COLUMN;
+                                $serviceColumn = Constant::SERVICE_COLUMN;
+                                $recordColumn = Constant::RECORD_COLUMN;
+                                $inoutColumn = constant::INOUT_COLUMN;
+                                if ($context == AppContext::PATIENT) {
+                                    for($i = 0; $i < count($patientColumn); $i++) {
+                                        $namePOST = str_replace(' ', '', $patientColumn[$i]) . "toDB";
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='' class='col-sm-2 col-form-label mb-3'>$patientColumn[$i]</label>
+                                            <div class='col-sm-10'>
+                                                <input type='text' class='form-control' id='' name='$namePOST' placeholder='input'>
+                                            </div>
+                                        </div>
+                                        ";
+                                    }
+                                } else if($context == AppContext::DOCTOR) {
+                                    for($i = 0; $i < count($doctorColumn); $i++) {
+                                        $namePOST = str_replace(' ', '', $doctorColumn[$i]) . "toDB";
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='' class='col-sm-2 col-form-label mb-3'>$doctorColumn[$i]</label>
+                                            <div class='col-sm-10'>
+                                                <input type='text' class='form-control' id='' name='$namePOST' placeholder='input'>
+                                            </div>
+                                        </div>
+                                        ";
+                                    }
+                                } else if($context == AppContext::SERVICE) {
+                                    for($i = 0; $i < count($serviceColumn); $i++) {
+                                        $inputType;
+                                        if($serviceColumn[$i] == "Jadwal") {
+                                            $inputType = "date";
+                                        } else {
+                                            $inputType = "text";
+                                        }
+                                        $namePOST = str_replace(' ', '', $serviceColumn[$i]) . "toDB";
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='' class='col-sm-2 col-form-label mb-3'>$serviceColumn[$i]</label>
+                                            <div class='col-sm-10'>
+                                                <input type='$inputType' class='form-control' id='' name='$namePOST' placeholder='input'>
+                                            </div>
+                                        </div>
+                                        ";
+                                    }
+                                } else if($context == AppContext::RECORD) {
+                                    for($i = 0; $i < count($recordColumn); $i++) {
+                                        $namePOST = str_replace(' ', '', $recordColumn[$i]) . "toDB";
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='' class='col-sm-2 col-form-label mb-3'>$recordColumn[$i]</label>
+                                            <div class='col-sm-10'>
+                                                <input type='text' class='form-control' id='' name='$namePOST' placeholder='input'>
+                                            </div>
+                                        </div>
+                                        ";
+                                    }
+                                } else if($context == AppContext::INOUT) {
+                                    for($i = 0; $i < count($inoutColumn); $i++) {
+                                        $inputType;
+                                        if($inoutColumn[$i] == "Tanggal") {
+                                            $inputType = "date";
+                                        } else {
+                                            $inputType = "text";
+                                        }
+                                        $namePOST = str_replace(' ', '', $inoutColumn[$i]) . "toDB";
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='' class='col-sm-2 col-form-label mb-3'>$inoutColumn[$i]</label>
+                                            <div class='col-sm-10'>
+                                                <input type='$inputType' class='form-control' id='' name='$namePOST' placeholder='input'>
+                                            </div>
+                                        </div>
+                                        ";
+                                    }
+                                }
+                            ?>
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-2">
+                                    <button class="btn login-button">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

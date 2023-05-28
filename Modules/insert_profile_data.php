@@ -11,9 +11,12 @@ if(isset($_POST['inputName']) && isset($_POST['inputDOB']) && isset($_POST['inpu
         $_POST['inputGender'],
         $_POST['inputAddress'],
         $_POST['inputPhone'],
-        $_POST['inputInsurance']
+        $_POST['inputInsurance'],
+        "randomize complaint",
+        null,
+        "randomize@gmail.com",
     );
-    $sql = "INSERT INTO patients(name, dob, gender, address, phone_number, insurance) VALUES('$data->name', '$data->dob', '$data->gender', '$data->address', '$data->phone_number', '$data->insurance')";
+    $sql = "INSERT INTO patients(name, dob, gender, address, phone_number, insurance, complaint, email, type) VALUES('$data->name', '$data->dob', '$data->gender', '$data->address', '$data->phone_number', '$data->insurance', '$data->complaint', '$data->email', '$data->type')";
     $result = $con->query($sql);
 }
 
