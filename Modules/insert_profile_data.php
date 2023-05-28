@@ -4,7 +4,9 @@ require_once("connection.php");
 require_once("Model/patient.php");
 $uname = $_SESSION['logged_in'];
 $data = new Patient();
-if(isset($_POST['inputName']) && isset($_POST['inputDOB']) && isset($_POST['inputGender']) && isset($_POST['inputAddress']) && isset($_POST['inputPhone']) && isset($_POST['inputInsurance'])) {
+if(isset($_POST['inputName']) && isset($_POST['inputDOB']) && isset($_POST['inputGender']) && isset($_POST['inputAddress']) && isset($_POST['inputPhone']) && isset($_POST['inputInsurance']) && isset($_POST["inputContext"])) {
+    $context = $_POST["inputContext"];
+    $randomNumbers = rand(1,100);
     $data->set_data(
         $_POST['inputName'],
         $_POST['inputDOB'],
@@ -16,8 +18,16 @@ if(isset($_POST['inputName']) && isset($_POST['inputDOB']) && isset($_POST['inpu
         null,
         "randomize@gmail.com",
     );
-    $sql = "INSERT INTO patients(name, dob, gender, address, phone_number, insurance, complaint, email, type) VALUES('$data->name', '$data->dob', '$data->gender', '$data->address', '$data->phone_number', '$data->insurance', '$data->complaint', '$data->email', '$data->type')";
-    $result = $con->query($sql);
+    if($context == "Rawat Jalan") {
+        $sql = "INSERT INTO rawat_jalan(name, dokter, checkinout, phone_number) VALUES('$data->name', 'Dr Agung Mp.L', 'In 25-05-23 / Out 02-06-23', '$data->phone_number')";
+        $result = $con->query($sql);
+        header('Location: ../Pages/home?context=rawatJalan');
+    } else {
+        $sql = "INSERT INTO rawat_inap(name, dokter, checkinout, room_no, phone_number) VALUES('$data->name', 'Dr Agung Mp.L', 'In 25-05-23 / Out 02-06-23', '$randomNumbers', '$data->phone_number')";
+        $result = $con->query($sql);
+        header('Location: ../Pages/home?context=rawatInap');
+    }
 }
+
 
 ?>

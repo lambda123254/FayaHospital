@@ -6,12 +6,13 @@ div.dataTables_filter, div.dataTables_length {
   margin: 10px;
 }
 
+
 th {
-  text-align: left;
+  text-align: center;
 }
 
 td {
-  text-align: right;
+  text-align: left;
   border-style: solid;
 }
 

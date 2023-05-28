@@ -1,6 +1,5 @@
 <?php
 include("../Modules/get_profile_data.php");
-include("../Modules/insert_profile_data.php");
 include("../Common/app_context.php");
 include("../Common/constant.php");
 
@@ -185,7 +184,7 @@ if(isset($_GET["context"])){
                         <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
                         <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
                     </svg>   
-                    Rawat Inap
+                    <div id="formTitleText"></div> 
                 </h5>
             </div>
             <div class="row pl-5 text-center justify-content-center" style="padding-left: 400px; padding-right: 150px;" >
@@ -197,7 +196,8 @@ if(isset($_GET["context"])){
                         </h5>
                     </div>
                     <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
-                        <form action="" method="POST">
+                        <form action="../Modules/insert_profile_data.php?" method="POST">
+                            <input class="hidden" type="text" id="inputContext" name="inputContext">
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label mb-3">Nama</label>
                                 <div class="col-sm-10">
@@ -313,12 +313,14 @@ if(isset($_GET["context"])){
                             </div>
                             <div class="col">
                                 <div class="d-flex flex-row-reverse">
-                                    <button class="btn btn-primary" id="inputDataButton">Input Data</button>
+                                    <button class="btn btn-primary <? if($context == AppContext::RAWATJALAN || $context == AppContext::RAWATINAP) { echo "hidden"; } ?>" id="inputDataButton">
+                                        Input Data
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         
-                        <table class="table" id="datatable">
+                        <table class="table dt-center" id="datatable">
                             <thead>
                                 <tr style="background-color: var(--lightBlueSlightDarker); color: white;">
                                     <?php
@@ -326,7 +328,9 @@ if(isset($_GET["context"])){
                                         $doctorColumn = Constant::DOCTOR_COLUMN;
                                         $serviceColumn = Constant::SERVICE_COLUMN;
                                         $recordColumn = Constant::RECORD_COLUMN;
-                                        $inoutColumn = constant::INOUT_COLUMN;
+                                        $inoutColumn = Constant::INOUT_COLUMN;
+                                        $rawatInapColumn = Constant::RAWATINAP_COLUMN;
+                                        $rawatJalanColumn = Constant::RAWATJALAN_COLUMN;
                                         if ($context == AppContext::PATIENT) {
                                             for($i = 0; $i < count($patientColumn); $i++) {
                                                 echo "<th>$patientColumn[$i]</th>";
@@ -346,6 +350,14 @@ if(isset($_GET["context"])){
                                         } else if($context == AppContext::INOUT) {
                                             for($i = 0; $i < count($inoutColumn); $i++) {
                                                 echo "<th>$inoutColumn[$i]</th>";
+                                            }
+                                        } else if($context == AppContext::RAWATINAP) {
+                                            for($i = 0; $i < count($rawatInapColumn); $i++) {
+                                                echo "<th>$rawatInapColumn[$i]</th>";
+                                            }
+                                        } else if($context == AppContext::RAWATJALAN) {
+                                            for($i = 0; $i < count($rawatJalanColumn); $i++) {
+                                                echo "<th>$rawatJalanColumn[$i]</th>";
                                             }
                                         }
                                     ?>

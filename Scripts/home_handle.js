@@ -16,6 +16,7 @@ $(document).ready(function() {
         formTitle.html(icon + "&nbsp;" + "Rawat Inap")
         datatable.addClass("d-none")
         input.addClass("d-none")
+        $('#inputContext').val("Rawat Inap");
     });
 
     $(document).on("click", "#rawatJalanButton", function() {
@@ -26,6 +27,7 @@ $(document).ready(function() {
         datatable.addClass("d-none")
         profile.addClass("d-none")
         input.addClass("d-none")
+        $('#inputContext').val("Rawat Jalan");
     });
 
     $(document).on("click", "#profileButton", function() {

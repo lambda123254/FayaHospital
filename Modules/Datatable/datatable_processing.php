@@ -80,6 +80,25 @@ else if($context == AppContext::INOUT) {
         array( 'db' => 'facility_id',   'dt' => 3 ),
         array( 'db' => 'type',     'dt' => 4 ),
     );
+} else if($context == AppContext::RAWATINAP) {
+    $table = 'rawat_inap';
+    $primaryKey = 'rawat_inap_id';
+    $columns = array(
+        array( 'db' => 'name', 'dt' => 0 ),
+        array( 'db' => 'dokter', 'dt' => 1 ),
+        array( 'db' => 'checkinout', 'dt' => 2 ),
+        array( 'db' => 'room_no',   'dt' => 3 ),
+        array( 'db' => 'phone_number',     'dt' => 4 ),
+    );
+} else if($context == AppContext::RAWATJALAN) {
+    $table = 'rawat_jalan';
+    $primaryKey = 'rawat_jalan_id';
+    $columns = array(
+        array( 'db' => 'name', 'dt' => 0 ),
+        array( 'db' => 'dokter', 'dt' => 1 ),
+        array( 'db' => 'checkinout', 'dt' => 2 ),
+        array( 'db' => 'phone_number',   'dt' => 3 ),
+    );
 }
 
 

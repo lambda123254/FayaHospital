@@ -39,6 +39,21 @@ abstract class Constant {
         "Masuk/Keluar"
     ];
 
+    public const RAWATINAP_COLUMN = [
+        "Nama Pasien",
+        "Dokter",
+        "Tanggal masuk/keluar",
+        "No Ruang Inap",
+        "Kontak Pasien"
+    ];
+
+    public const RAWATJALAN_COLUMN = [
+        "Tanggal",
+        "Jadwal Dokter",
+        "Rekam Medis",
+        "Kontak Pasien",
+    ];
+
     public const PATIENT_HTML_ICON = '
     <img src="../Assets/Icon/patient.png" alt="" width="36" height="36">
     ';
